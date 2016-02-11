@@ -5,6 +5,7 @@ public class ShootProjectile : MonoBehaviour
 {
     public float startOffset;
     private static Vector3 playerFacing;
+    private bool enabled = false;
     Animator animation;
 
     public KeyCode MouseFire1;
@@ -43,50 +44,53 @@ public class ShootProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        // Mouse Fire
-        if (Input.GetKeyDown(MouseFire1))
+        if (enabled)
         {
-            // Shoot at mouse position
-            Shoot(mousePosition, MagicProjectile.MagicMissile);
-        }
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (Input.GetKeyDown(MouseFire2))
-        {
-            // Shoot at mouse position
-            Shoot(mousePosition, MagicProjectile.FireBall);
-        }
+            // Mouse Fire
+            if (Input.GetKeyDown(MouseFire1))
+            {
+                // Shoot at mouse position
+                Shoot(mousePosition, MagicProjectile.MagicMissile);
+            }
 
-        // Keyboard Fire
-        if (Input.GetKeyDown(Spell_1_triggerKey))
-        {
-            // Shoot at mouse position
-            Shoot(mousePosition, MagicProjectile.MagicMissile);
-        }
+            if (Input.GetKeyDown(MouseFire2))
+            {
+                // Shoot at mouse position
+                Shoot(mousePosition, MagicProjectile.FireBall);
+            }
 
-        if (Input.GetKeyDown(Spell_2_triggerKey))
-        {
-            // Shoot at mouse position
-            Shoot(mousePosition, MagicProjectile.FireBall);
-        }
+            // Keyboard Fire
+            if (Input.GetKeyDown(Spell_1_triggerKey))
+            {
+                // Shoot at mouse position
+                Shoot(mousePosition, MagicProjectile.MagicMissile);
+            }
 
-        if (Input.GetKeyDown(Spell_3_triggerKey))
-        {
-            // Shoot at mouse position
-            Shoot(mousePosition, MagicProjectile.IceBall);
-        }
+            if (Input.GetKeyDown(Spell_2_triggerKey))
+            {
+                // Shoot at mouse position
+                Shoot(mousePosition, MagicProjectile.FireBall);
+            }
 
-        if (Input.GetKeyDown(Spell_4_triggerKey))
-        {
-            // Shoot at mouse position
-            Shoot(mousePosition, MagicProjectile.FireWind);
-        }
+            if (Input.GetKeyDown(Spell_3_triggerKey))
+            {
+                // Shoot at mouse position
+                Shoot(mousePosition, MagicProjectile.IceBall);
+            }
 
-        if (Input.GetKeyDown(Spell_5_triggerKey))
-        {
-            // Shoot at mouse position
-            Shoot(mousePosition, MagicProjectile.NewSpell);
+            if (Input.GetKeyDown(Spell_4_triggerKey))
+            {
+                // Shoot at mouse position
+                Shoot(mousePosition, MagicProjectile.FireWind);
+            }
+
+            if (Input.GetKeyDown(Spell_5_triggerKey))
+            {
+                // Shoot at mouse position
+                Shoot(mousePosition, MagicProjectile.NewSpell);
+            }
         }
     }
 
@@ -119,30 +123,38 @@ public class ShootProjectile : MonoBehaviour
             case MagicProjectile.MagicMissile:
                 projectile = (GameObject)Instantiate(Spell_1_projectileType, projectileStartPosition, Quaternion.identity);
                 projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileDirection.x * Spell_1_speed, projectileDirection.y * Spell_1_speed);
+                projectile.GetComponent<DestroyProjectile>().SetOwner(this.gameObject);
                 break;
 
             case MagicProjectile.FireBall:
                 projectile = (GameObject)Instantiate(Spell_2_projectileType, projectileStartPosition, Quaternion.identity);
                 projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileDirection.x * Spell_2_speed, projectileDirection.y * Spell_2_speed);
+                projectile.GetComponent<DestroyProjectile>().SetOwner(this.gameObject);
                 break;
 
             case MagicProjectile.IceBall:
                 projectile = (GameObject)Instantiate(Spell_3_projectileType, projectileStartPosition, Quaternion.identity);
                 projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileDirection.x * Spell_3_speed, projectileDirection.y * Spell_3_speed);
+                projectile.GetComponent<DestroyProjectile>().SetOwner(this.gameObject);
                 break;
 
             case MagicProjectile.FireWind:
                 projectile = (GameObject)Instantiate(Spell_4_projectileType, projectileStartPosition, Quaternion.identity);
                 projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileDirection.x * Spell_4_speed, projectileDirection.y * Spell_4_speed);
+                projectile.GetComponent<DestroyProjectile>().SetOwner(this.gameObject);
                 break;
 
             case MagicProjectile.NewSpell:
                 projectile = (GameObject)Instantiate(Spell_5_projectileType, projectileStartPosition, Quaternion.identity);
                 projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileDirection.x * Spell_5_speed, projectileDirection.y * Spell_5_speed);
+                projectile.GetComponent<DestroyProjectile>().SetOwner(this.gameObject);
                 break;
 
             default:
                 break;
         }
     }
+
+    public void Enable() { enabled = true; }
+    public void Disable() { enabled = false; }
 }

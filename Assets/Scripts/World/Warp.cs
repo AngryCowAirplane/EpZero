@@ -9,7 +9,6 @@ public class Warp : MonoBehaviour {
     IEnumerator OnTriggerEnter2D(Collider2D other)
     {
         ScreenFader sf = GameObject.FindGameObjectWithTag("fader").GetComponent<ScreenFader> ();
-        Debug.Log("WARP DETECTED");
 
         if (other.tag == "Player")
         {

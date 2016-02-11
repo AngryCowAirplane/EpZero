@@ -45,14 +45,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\CharClass.cs" />
      <Compile Include="Assets\Scripts\Movement\Enemy\RedDragonMovement.cs" />
      <Compile Include="Assets\Scripts\Movement\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Movement\PointsMove.cs" />
      <Compile Include="Assets\Scripts\Movement\Weapons\DestroyProjectile.cs" />
      <Compile Include="Assets\Scripts\Movement\Weapons\ShootProjectile.cs" />
+     <Compile Include="Assets\Scripts\PlayerClass.cs" />
      <Compile Include="Assets\Scripts\World\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\World\MenuScript.cs" />
      <Compile Include="Assets\Scripts\World\ScreenFader.cs" />
      <Compile Include="Assets\Scripts\World\Warp.cs" />
+     <Compile Include="Assets\Spawn.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\ImportBehaviour.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\SortingLayerExposed.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\TileAnimator.cs" />
@@ -67,6 +71,7 @@
      <None Include="Assets\Tiled2Unity\Textures\_ReadMe.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Main.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\Room.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\NEWMAP.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\License.txt" />
      <None Include="Assets\Tiled2Unity\Imported\_ReadMe.txt" />
      <None Include="Assets\Tiled2Unity\Prefabs\Meshes\_ReadMe.txt" />

@@ -39,6 +39,8 @@ public class MenuScript : MonoBehaviour {
         quitMenu.enabled = false;
         this.enabled = false;
         fader.enabled = true;
+
+        GameObject.FindWithTag("Player").GetComponent<ShootProjectile>().Enable();
     }
 
     public void ExitGame()
